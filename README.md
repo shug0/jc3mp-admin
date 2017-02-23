@@ -6,7 +6,7 @@ Display a web interface for managing your Just Cause 3 MP Server. You need to ha
 
 ## Implemented
 - List the connected players
-
+- You can kick a player in the list
 
 ## Available Scripts
 In the project directory, you can run:
