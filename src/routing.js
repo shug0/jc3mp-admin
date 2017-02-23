@@ -7,6 +7,6 @@ import PlayerListContainer from './components/containers/Players/PlayerListConta
 export default (
   <Route path="/" component={AppContainer}>
     <IndexRoute component={PlayerListContainer} />
-    <Route path="/players" component={PlayerListContainer}/>
+    <Route path="players" component={PlayerListContainer}/>
   </Route>
 );

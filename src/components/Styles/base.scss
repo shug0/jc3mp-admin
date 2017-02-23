@@ -1,8 +1,23 @@
 body, html, #root, main {
   height: 100%;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #eeeeee;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+.wrapper {
+  width: 90%;
+  padding: 1rem 2rem 1rem;
+  margin: 2rem auto;
+  max-width: 1366px;
+}
+
+@import 'Header';

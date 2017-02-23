@@ -1,0 +1,15 @@
+.Header {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  nav {
+    height: 60px;
+    line-height: 60px;
+    a {
+      height: 100%;
+      padding: 0 2rem;
+      display: inline-block;
+    }
+  }
+}

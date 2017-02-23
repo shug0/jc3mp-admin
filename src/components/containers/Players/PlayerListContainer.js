@@ -1,21 +1,42 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import { api as apiConfig } from '../../../constants/api';
+
 import PlayerList from '../../presentationals/Players/PlayersList';
 
 class PlayerListContainer extends Component {
   constructor() {
     super();
 
+    this.kickPlayer = this.kickPlayer.bind(this);
+
     this.state = {
-      players: []
+      players: [],
+      playersLoaded: false,
     };
   }
 
   componentDidMount() {
-    axios.get('http://127.0.0.1:4204/players/')
+    axios.get(`${apiConfig.url}/players/`)
       .then((response) => {
-        this.setState({players: response.data})
+        this.setState({
+          players: response.data,
+          playersLoaded: true
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  kickPlayer(steamId) {
+    axios.get(`${apiConfig.url}/players/${steamId}/kick`)
+      .then((response) => {
+        this.setState({
+          players: response.data,
+          playersLoaded: true
+        })
       })
       .catch(function (error) {
         console.log(error);
@@ -23,10 +44,14 @@ class PlayerListContainer extends Component {
   }
 
 	render() {
-    const { players } = this.state;
+    const { players, playersLoaded } = this.state;
 
 		return (
-			<PlayerList players={players} />
+			<PlayerList
+        players={players}
+        playersLoaded={playersLoaded}
+        kickPlayer={this.kickPlayer}
+      />
 		);
 	}
 }
