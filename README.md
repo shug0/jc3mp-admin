@@ -1,19 +1,14 @@
-# React Bootstrap App
+# Just Cause 3 MP - Admin Web Interface
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project was bootstrapped with [Create React App] for more informations on the build / dev system look on : (https://github.com/facebookincubator/create-react-app).
 
-**Including now :**
-- SCSS integration 
-- React Router
-- React FontAwesome
-- Classnames
-- Chance.js
+Display a web interface for managing your Just Cause 3 MP Server. You need to have the [JC3 MP REST API](https://github.com/shug0/jc3mp-rest-api) packages on it for make this app works.
 
-*The listed functionnality are optionnal, 
-but if you don't need any of theses it's better for you to use the original `create react app beyond.* 
+## Implemented
+- List the connected players
+
 
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
@@ -36,49 +31,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
-
-
-## Added Library :
-Few library are added in the `package.json`, feel free to use or remove it :).
-
-#### [Classnames](https://github.com/JedWatson/classnames)
-A simple javascript utility for conditionally joining classNames together
-##### Example : 
-```
-import classNames from 'classnames';
-// ...
-var btnClass = classNames({
-  'btn': true,
-  'btn-pressed': this.state.isPressed,
-  'btn-over': !this.state.isPressed && this.state.isHovered
-});
-// ...
-```
-
-
-#### [Chance.js](http://chancejs.com/)
-Chance - Random generator helper for JavaScript
-##### Example : 
-```
-import Chance from 'chance';
-const chance = new Chance();
-
-// Get a random zip code
-const zipCode = chance.zip();
-
-// Get a random name 
-const name = chance.name();
-
-```
-
-
-#### [react-fontawesome](https://www.npmjs.com/package/react-fontawesome)
-A React component for the font-awesome icon library.
-##### Example : 
-```
-import FontAwesome from 'react-fontawesome';
-// ...
-<FontAwesome name='rocket' />
-```
-
-**Note :** You still need to load the fontawesome libray in the `index.html`. 
