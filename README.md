@@ -1,12 +1,19 @@
 # Just Cause 3 MP - Admin Web Interface
 
-This project was bootstrapped with [Create React App] for more informations on the build / dev system look on : (https://github.com/facebookincubator/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+## Purposes :
 Display a web interface for managing your Just Cause 3 MP Server. You need to have the [JC3 MP REST API](https://github.com/shug0/jc3mp-rest-api) packages on it for make this app works.
 
 ## Implemented
 - List the connected players
 - You can kick a player in the list
+
+## Actual States 
+![Players list interface](http://i.imgur.com/R7gBpuT.png)
+
+
+# For the devs 
 
 ## Available Scripts
 In the project directory, you can run:
