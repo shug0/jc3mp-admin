@@ -1,3 +1,9 @@
 .PlayersList {
+  position: relative;
 
+  .refreshIcon {
+    position: absolute !important;
+    top: 1rem;
+    right: 1rem;
+  }
 }

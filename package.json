@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "lodash": "^4.17.4",
     "material-ui": "^0.17.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

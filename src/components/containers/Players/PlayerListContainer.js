@@ -1,47 +1,57 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import _ from 'lodash';
 
-import { api as apiConfig } from '../../../constants/api';
+import { getPlayers, kickPlayer} from '../../../api/player';
 
 import PlayerList from '../../presentationals/Players/PlayersList';
+
+const playersMocks = [
+  { name: 'Shug0', client: { steamId: _.random(1, 99999999999)} },
+  { name: 'Zoski', client: { steamId: _.random(1, 99999999999)} },
+  { name: 'Scrutch', client: { steamId: _.random(1, 99999999999)} },
+  { name: 'Daft Spirit', client: { steamId: _.random(1, 99999999999)} },
+  { name: 'KevinDu33', client: { steamId: _.random(1, 99999999999)} },
+];
 
 class PlayerListContainer extends Component {
   constructor() {
     super();
 
-    this.kickPlayer = this.kickPlayer.bind(this);
+    this.handleKickPlayer = this.handleKickPlayer.bind(this);
+    this.handleGetPlayers = this.handleGetPlayers.bind(this);
 
     this.state = {
-      players: [],
+      players: playersMocks,
       playersLoaded: false,
     };
   }
 
-  componentDidMount() {
-    axios.get(`${apiConfig.url}/players/`)
-      .then((response) => {
+  handleGetPlayers() {
+    this.setState({
+      playersLoaded: false
+    });
+    getPlayers((response) => {
+      if (response.status === 200) {
         this.setState({
-          players: response.data,
+          players: response.data.length ? response.data : playersMocks,
           playersLoaded: true
-        })
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        });
+      }
+    });
   }
 
-  kickPlayer(steamId) {
-    axios.get(`${apiConfig.url}/players/${steamId}/kick`)
-      .then((response) => {
-        this.setState({
-          players: response.data,
-          playersLoaded: true
-        })
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  handleKickPlayer(steamId) {
+    kickPlayer(steamId, (response) => {
+      if (response.status === 200) {
+        console.log('Player kicked');
+      }
+    });
   }
+
+  componentDidMount() {
+    this.handleGetPlayers();
+  }
+
 
 	render() {
     const { players, playersLoaded } = this.state;
@@ -50,7 +60,8 @@ class PlayerListContainer extends Component {
 			<PlayerList
         players={players}
         playersLoaded={playersLoaded}
-        kickPlayer={this.kickPlayer}
+        handleKickPlayer={this.handleKickPlayer}
+        handleGetPlayers={this.handleGetPlayers}
       />
 		);
 	}
