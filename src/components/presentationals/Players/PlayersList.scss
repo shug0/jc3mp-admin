@@ -1,9 +1,12 @@
 .PlayersList {
-  position: relative;
+  header {
+    margin-bottom: 1rem;
+    position: relative;
 
-  .refreshIcon {
-    position: absolute !important;
-    top: 1rem;
-    right: 1rem;
+    .actions {
+      .searchInput {
+        margin-right: 1rem;
+      }
+    }
   }
 }

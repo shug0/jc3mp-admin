@@ -7,6 +7,7 @@ const Header = () => (
   <AppBar
     style={{paddingRight: 0}}
     className="Header"
+    height="50"
     title={<Link to="/">JC3 MP Admin</Link>}
     children={
       <nav>

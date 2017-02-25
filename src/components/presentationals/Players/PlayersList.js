@@ -3,8 +3,13 @@ import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
-import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
 import IconButton from 'material-ui/IconButton';
+import TextField from 'material-ui/TextField';
+
+import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
+import SearchIcon from 'material-ui/svg-icons/action/search';
+import { blueA400 } from 'material-ui/styles/colors';
+
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
@@ -17,10 +22,15 @@ class PlayersList extends Component {
     super();
     this.handleClickKickPlayer = this.handleClickKickPlayer.bind(this);
     this.handleClickGetPlayers = this.handleClickGetPlayers.bind(this);
+    this.handleChangeSearchPlayer = this.handleChangeSearchPlayer.bind(this);
   }
 
   handleClickGetPlayers() {
     this.props.handleGetPlayers();
+  }
+
+  handleChangeSearchPlayer(input) {
+    this.props.handleSearchPlayer(input.target.value);
   }
 
   handleClickKickPlayer(player) {
@@ -43,14 +53,25 @@ class PlayersList extends Component {
 
     return (
       <Paper className='PlayersList wrapper'>
-        <IconButton
-          tooltip={"Refresh the players"}
-          className="refreshIcon"
-          onClick={this.handleClickGetPlayers}
-          children={<RefreshIcon />}
-        />
+        <header style={{ backgroundColor: blueA400 }}>
+          <h2>Players :</h2>
+          <div className="actions">
+            <TextField
+              className="searchInput"
+              hintStyle={{color: 'rgba(255,255,255,0.4)'}}
+              inputStyle={{color: 'rgba(255,255,255,0.8)'}}
+              hintText="Search a player"
+              onChange={this.handleChangeSearchPlayer}
+            />
+            <IconButton
+              className="refreshIcon"
+              tooltip={"Refresh the players"}
+              onClick={this.handleClickGetPlayers}
+              children={<RefreshIcon color="white" />}
+            />
+          </div>
+        </header>
 
-        <h2>Players :</h2>
         {!playersLoaded && <CircularProgress size={60} thickness={7} /> }
 
         {playersLoaded && hasPlayer  &&

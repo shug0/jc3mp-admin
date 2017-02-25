@@ -4,7 +4,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {
-  blueA400,
+  blueGrey800,
   blue500,
   grey400,
   pink600,
@@ -19,13 +19,16 @@ import './Styles/base.scss';
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: blueA400,
+    primary1Color: blueGrey800,
     primary2Color: blue500,
     primary3Color: grey400,
     accent1Color: pink600,
     accent2Color: grey200,
     accent3Color: grey500,
-  }
+  },
+  appBar: {
+    height: 50,
+  },
 });
 
 const AppContainer = ({ children, location }) => (

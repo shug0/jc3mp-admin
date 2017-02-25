@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import { getPlayers, kickPlayer} from '../../../api/player';
 
@@ -10,11 +11,26 @@ class PlayerListContainer extends Component {
 
     this.handleKickPlayer = this.handleKickPlayer.bind(this);
     this.handleGetPlayers = this.handleGetPlayers.bind(this);
+    this.handleSearchPlayer = this.handleSearchPlayer.bind(this);
 
     this.state = {
       players: [],
+      filteredPlayers: [],
       playersLoaded: false,
     };
+  }
+
+  handleSearchPlayer(input) {
+    if(input.length === 0) {
+      this.handleGetPlayers();
+    }
+    else {
+      const newFilteredPlayers =
+      this.state.players.filter(player => _.lowerCase(player.name).includes(_.lowerCase(input)));
+      this.setState({
+        filteredPlayers: newFilteredPlayers
+      })
+    }
   }
 
   handleGetPlayers() {
@@ -27,6 +43,7 @@ class PlayerListContainer extends Component {
         if (response.status === 200) {
           this.setState({
             players: response.data,
+            filteredPlayers: response.data,
             playersLoaded: true
           });
         }
@@ -54,14 +71,15 @@ class PlayerListContainer extends Component {
 
 
 	render() {
-    const { players, playersLoaded } = this.state;
+    const { filteredPlayers, playersLoaded } = this.state;
 
 		return (
 			<PlayerList
-        players={players}
+        players={filteredPlayers}
         playersLoaded={playersLoaded}
         handleKickPlayer={this.handleKickPlayer}
         handleGetPlayers={this.handleGetPlayers}
+        handleSearchPlayer={this.handleSearchPlayer}
       />
 		);
 	}
