@@ -29,6 +29,10 @@ body {
       display: flex;
       top: 1rem;
       right: 1rem;
+      align-items: center;
+      & > * {
+        margin-right: 1rem;
+      }
     }
 
       h2 {

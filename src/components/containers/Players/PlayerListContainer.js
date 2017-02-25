@@ -57,6 +57,7 @@ class PlayerListContainer extends Component {
     kickPlayer(steamId)
       .then((response) => {
         if (response.status === 200) {
+          this.handleGetPlayers();
           console.log('Player kicked');
         }
       })

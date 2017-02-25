@@ -47,6 +47,7 @@ class PlayersList extends Component {
         <TableRowColumn>{index}</TableRowColumn>
         <TableRowColumn>{player.name}</TableRowColumn>
         <TableRowColumn>{player.client.steamId}</TableRowColumn>
+        <TableRowColumn>{player.client.ping}</TableRowColumn>
         <TableRowColumn><FlatButton label="Kick" secondary={true} onClick={() => this.handleClickKickPlayer(player)}/></TableRowColumn>
       </TableRow>
     ));
@@ -56,10 +57,17 @@ class PlayersList extends Component {
         <header style={{ backgroundColor: blueA400 }}>
           <h2>Players :</h2>
           <div className="actions">
+            <SearchIcon color="white" style={{marginRight: '-1.2rem'}}/>
             <TextField
               className="searchInput"
-              hintStyle={{color: 'rgba(255,255,255,0.4)'}}
-              inputStyle={{color: 'rgba(255,255,255,0.8)'}}
+              hintStyle={{
+                color: 'rgba(255,255,255,0.4)',
+                paddingLeft: '1.5rem'
+              }}
+              inputStyle={{
+                color: 'rgba(255,255,255,0.8)',
+                paddingLeft: '1.5rem'
+              }}
               hintText="Search a player"
               onChange={this.handleChangeSearchPlayer}
             />
@@ -81,6 +89,7 @@ class PlayersList extends Component {
                 <TableHeaderColumn>ID</TableHeaderColumn>
                 <TableHeaderColumn>Name</TableHeaderColumn>
                 <TableHeaderColumn>Steam ID</TableHeaderColumn>
+                <TableHeaderColumn>Ping</TableHeaderColumn>
                 <TableHeaderColumn>Actions</TableHeaderColumn>
               </TableRow>
             </TableHeader>
